@@ -51,7 +51,10 @@ def get_all_failed_students():
     failed_students = []
 
     for student_name in get_all_student_names():
-        if calculate_average_mark_for_student(student_name) < 50:
+        average_mark = calculate_average_mark_for_student(student_name)
+        assert isinstance(average_mark, float), f"Expected float but got {type(average_mark)} for student {student_name}"
+        
+        if average_mark < 50:
             failed_students.append(student_name)
 
     return failed_students
