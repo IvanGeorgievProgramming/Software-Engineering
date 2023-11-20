@@ -51,7 +51,7 @@ bad_code.py:46:2: E114 indentation is not a multiple of 4 (comment)
 bad_code.py:46:48: W292 no newline at end of file
 ```
 
-## Example with bad code
+## Example with good code
 
 ```bash
 flake8 good_code.py
