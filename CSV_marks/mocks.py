@@ -1,7 +1,8 @@
 import unittest
 from unittest.mock import patch, Mock
 import pandas as pd
-import results as student_marks
+import functions as student_marks
+import cProfile
 
 class TestStudentMarks(unittest.TestCase):
     
@@ -66,8 +67,13 @@ class TestStudentMarks(unittest.TestCase):
         # Manually determine students with an average below 50
         self.assertEqual(result, ['David', 'Greta', 'Hannah', 'Kevin', 'Madison', 'Nicholas'])
 
+def run_tests():
+    loader = unittest.TestLoader()
+    suite = loader.loadTestsFromTestCase(TestStudentMarks)
+    unittest.TextTestRunner().run(suite)
+
 if __name__ == "__main__":
     try:
-        unittest.main()
+        cProfile.run('run_tests()')
     except Exception as e:
         print(f"An error occurred during the test run: {e}")

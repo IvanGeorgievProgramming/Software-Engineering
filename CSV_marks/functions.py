@@ -1,20 +1,22 @@
 import pandas as pd
 
+path = "D:\Ivan\Programming\Software Engineering\CSV_marks\marks.csv"
+
 # * Get Names
 def get_all_test_names():
-    df = pd.read_csv("marks.csv")
+    df = pd.read_csv(path)
 
     return df.columns[1:].values
 
 def get_all_student_names():
-    df = pd.read_csv("marks.csv")
+    df = pd.read_csv(path)
 
     return df["Name"].values
 
 # * Calculate Average Mark
 
 def calculate_average_mark_for_test(test_name):
-    df = pd.read_csv("marks.csv")
+    df = pd.read_csv(path)
 
     if test_name not in df.columns:
         return f"There is no test with name {test_name}"
@@ -25,7 +27,7 @@ def calculate_average_mark_for_test(test_name):
     return rounded_average_mark_for_test
 
 def calculate_average_mark_for_student(student_name):
-    df = pd.read_csv("marks.csv")
+    df = pd.read_csv(path)
     df.set_index('Name', inplace=True)
 
     if student_name not in df.index:
